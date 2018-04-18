@@ -2,6 +2,10 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000; //use environment variable PORT or use 3000 if the env var is not set
+//heroku will set the env var, that's why we need to generalize this
+//see below at app.listen
+
 var app = express();
 
 hbs.registerPartials(__dirname + '/views/partials');
@@ -70,6 +74,6 @@ app.get('/bad', (req, res) => {
 });
 
 //causes the app to start listening on the given port
-app.listen(3000, () => {
-    console.log('Server is up on port 3000');
+app.listen(port, () => {
+    console.log(`Server is up on port ${port}`);
 });
