@@ -2,6 +2,14 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+//add a new projects page to the site
+//register new url & handlebars template @ /projects
+//make the view file, render everything including header and footer, then a message like "portfolio page"
+//inside header add a new link for projects page
+//test locally on localhost:3000
+//commit then push to github
+//then git push heroku to test on the internet
+
 const port = process.env.PORT || 3000; //use environment variable PORT or use 3000 if the env var is not set
 //heroku will set the env var, that's why we need to generalize this
 //see below at app.listen
@@ -63,6 +71,13 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About Page',
+    });
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Portfolio',
+        projectPage: 'A list of my github repos'
     });
 });
 
